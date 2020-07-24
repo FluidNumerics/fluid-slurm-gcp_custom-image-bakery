@@ -1,0 +1,28 @@
+{
+  "variables": {
+    "project_id": "",
+    "zone": "",
+    "image_name":"custom-compute",
+    "build_id": "",
+    "subnet": "default",
+    "base": "centos",
+    "fluid_version": "v2-4-0",
+    "disk_size_gb": 15
+  },
+  "builders": [{
+    "type": "googlecompute",
+    "project_id": "{{user `project_id`}}",
+    "source_image_family": "fluid-slurm-gcp-compute-{{user `base`}}-{{user `fluid_version`}}",
+    "source_image_project_id": "fluid-cluster-ops",
+    "disk_size": "{{user `disk_size_gb`}}",
+    "zone": "{{user `zone`}}",
+    "subnetwork" :"{{user `subnet`}}",
+    "image_family": "{{user `image_name`}}",
+    "image_name": "{{user `image_name`}}-{{timestamp}}",
+    "instance_name":"{{user `image_name`}}-image-node-{{timestamp}}",
+    "tags":["cloudbuild"],
+    "ssh_username": "packer",
+    "startup_script_file": "startup-script.sh"
+  }]
+}
+
