@@ -40,3 +40,9 @@ On your cluster's controller instances,
 3. Find the partitions.machines block you want to use to deploy your image. Set the image field within this block to `projects/MY-GCP-PROJECT-ID/global/images/family/MY-APP`
 4. Preview the partition update `$ cluster-services update partitions --config=config.yaml --preview`
 5. Apply the partition update `$ cluster-services update partitions --config=config.yaml`
+
+## License
+### [This Repository](./LICENSE)
+
+### Fluid-Slurm-GCP Images
+Use of the `projects/fluid-cluster-ops/global/images/fluid-slurm-gcp-*` images used in the build of your custom images incur a $0.01 USD/vCPU/hour and $0.09 USD/GPU/hour usage fee on Google Cloud Platform. Additionally, use of custom images built on top of the fluid-slurm-gcp images will continue to incur the same usage fee. This usage fee entitles you to support from Fluid Numerics according to the terms and conditions of the [Fluid-Slurm-GCP End User License Agreement](https://help.fluidnumerics.com/slurm-gcp/eula).
