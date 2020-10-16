@@ -26,7 +26,7 @@ steps:
         "-var","subnet=${_SUBNETWORK}",
         "-var","base=${_FLUID_BASE}",
         "-var","fluid_version=${_FLUID_VER}",
-        'packer.json']
+        'examples/openfoam/packer.json']
   waitFor: ["-"]
 
 substitutions:
