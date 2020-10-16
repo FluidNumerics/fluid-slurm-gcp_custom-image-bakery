@@ -16,7 +16,7 @@
 steps:
 
 - id: Build Compute Node Image
-  name: 'gcr.io/$PROJECT_ID/packer'
+  name: 'hashicorp/packer'
   args: ["build",
         "-force",
         "-var","project_id=$PROJECT_ID",

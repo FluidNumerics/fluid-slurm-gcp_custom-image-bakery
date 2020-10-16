@@ -12,6 +12,7 @@ in your [cluster-configuration file](https://help.fluidnumerics.com/slurm-gcp/do
 
 ## License & Usage
 *  [**This Repository**](./LICENSE)
+*  [**Packer**](https://github.com/hashicorp/packer/blob/master/LICENSE)
 *  [**Paraview**](https://www.paraview.org/paraview-license/)
 *  [**Fluid-Slurm-GCP**](https://help.fluidnumerics.com/slurm-gcp/eula) - Use of the fluid-slurm-gcp images during the build of your custom images incur a $0.01 USD/vCPU/hour and $0.09 USD/GPU/hour usage fee on Google Cloud Platform. Additionally, use of custom images built on top of the fluid-slurm-gcp images will continue to incur the same usage fee when deployed on Google Cloud Platform. This usage fee entitles you to support from Fluid Numerics according to the terms and conditions of the [Fluid-Slurm-GCP End User License Agreement](https://help.fluidnumerics.com/slurm-gcp/eula).
 
