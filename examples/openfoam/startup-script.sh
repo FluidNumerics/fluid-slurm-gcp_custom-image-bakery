@@ -51,10 +51,6 @@ source /etc/profile.d/openmpi.sh
 git clone --depth 1 https://github.com/OpenFOAM/OpenFOAM-dev.git ${INSTALL_ROOT}/openfoam/OpenFOAM-dev
 git clone --depth 1 https://github.com/OpenFOAM/ThirdParty-dev.git ${INSTALL_ROOT}/openfoam/ThirdParty-dev
 
-# Link MPI compilers
-ln -s ${INSTALL_ROOT}/openmpi/mpicc ${INSTALL_ROOT}/openfoam/OpenFOAM-dev/bin/mpicc
-ln -s ${INSTALL_ROOT}/openmpi/mpirun ${INSTALL_ROOT}/openfoam/OpenFOAM-dev/bin/mpirun
-
 source ${INSTALL_ROOT}/openfoam/OpenFOAM-dev/etc/bashrc
 
 # Install Third Party dependencies
