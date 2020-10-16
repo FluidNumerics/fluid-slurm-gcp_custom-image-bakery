@@ -55,6 +55,8 @@ git clone --depth 1 https://github.com/OpenFOAM/ThirdParty-dev.git ${INSTALL_ROO
 ln -s ${INSTALL_ROOT}/openmpi/mpicc ${INSTALL_ROOT}/openfoam/OpenFOAM-dev/bin/mpicc
 ln -s ${INSTALL_ROOT}/openmpi/mpirun ${INSTALL_ROOT}/openfoam/OpenFOAM-dev/bin/mpirun
 
+source ${INSTALL_ROOT}/openfoam/OpenFOAM-dev/etc/bashrc
+
 # Install Third Party dependencies
 cd ${INSTALL_ROOT}/openfoam/ThirdParty-dev
 ./Allwmake
