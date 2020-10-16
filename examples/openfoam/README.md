@@ -1,14 +1,31 @@
 # Fluid-Slurm-GCP Custom Image Bakery : OpenFOAM
 This repository contains tools to build custom images on top of Fluid-Slurm-GCP specific to your organizations applications.
-This example builds OpenFOAM with GCC-9.2.0 and OpenMPI 4.0.5. The resulting image is called `openfoam-gcp-${timestamp}` and is posted to your GCP projects VM images.
+This example builds OpenFOAM with GCC-9.2.0 and OpenMPI 4.0.5. The resulting image is called `openfoam-gcp` and is posted to your GCP projects VM images.
 
 
 ## Quick Start
-Fluid Numerics currently offers a publicly available OpenFOAM image that is ready-to-use with the autoscaling [Fluid-Slurm-GCP HPC Cluster](https://console.cloud.google.com/marketplace/details/fluid-cluster-ops/fluid-slurm-gcp). To quickly get started with OpenFOAM, set
+Fluid Numerics currently offers a publicly available OpenFOAM image that is ready-to-use with the autoscaling [Fluid-Slurm-GCP HPC Cluster](https://console.cloud.google.com/marketplace/details/fluid-cluster-ops/fluid-slurm-gcp). After launching your cluster, log in to the controller instance and create a cluster config file.
 ```
-default_compute_image =
+sudo su
+cluster-services list all > config.yaml
 ```
-in your [cluster-configuration file](https://help.fluidnumerics.com/slurm-gcp/documentation/cluster-services) on your fluid-slurm-gcp cluster.
+Open the `config.yaml` file in a text editor and edit the partitions block to create a partition for running openfoam. Set the following variables:
+* `partitions[0].name = openfoam`
+* `partitions[0].machines[0].name = openfoam`
+* `partitions[0].machines[0].disk_size_gb = 50`
+* `partitions[0].machines[0].image = projects/fluid-cluster-ops/global/images/openfoam-gcp`
+* `partitions[0].machines[0].machine_type = n1-highcpu-16`
+
+Save the changes in `config.yaml`. Note that the `machine_type` you choose depends on your compute requirements. We currently recommend 2 vCPU for each MPI rank and larger VM sizes over many small VM's. Additionally, use the `--bind-to core` option when running with `mpirun`.
+
+Update your cluster's partitions using `cluster-services`. First, preview the changes you are about to make
+```
+cluster-services update partitions --config=config.yaml --preview
+```
+Once you are ready to apply the changes, run the same command without the `--preview` flag.
+```
+cluster-services update partitions --config=config.yaml
+```
 
 ## License & Usage
 *  [**This Repository**](./LICENSE)
