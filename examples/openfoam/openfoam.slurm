@@ -12,8 +12,6 @@
 #
 #SBATCH -e openfoam-%j.log
 #
-#SBATCH --nodelist=openfoam-1
-#
 # ////////////////////////////////////////// #
 
 source /etc/profile.d/openmpi.sh
