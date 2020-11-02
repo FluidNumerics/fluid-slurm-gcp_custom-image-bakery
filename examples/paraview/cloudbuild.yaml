@@ -1,0 +1,41 @@
+# To build locally ( recommended )
+#
+# cloud-build-local --substitutions=_OS=ubuntu,SHORT_SHA=local --dryrun=false .
+#
+#
+# To execute a build pipeline
+#
+#       gcloud builds submit .
+#
+# If you'd like to create a custom image family for the compute, login, and controller images,
+#
+#       gcloud builds submit . --substitutions=_FAMILY_TAG="_my-tag"
+#
+#
+
+steps:
+
+- id: Build Compute Node Image
+  name: 'hashicorp/packer'
+  args: ["build",
+        "-force",
+        "-var","project_id=$PROJECT_ID",
+        "-var","zone=$_ZONE",
+        "-var","image_name=${_IMAGE_NAME}",
+        "-var","build_id=${BUILD_ID}",
+        "-var","subnet=${_SUBNETWORK}",
+        "-var","base=${_FLUID_BASE}",
+        "-var","fluid_version=${_FLUID_VER}",
+        'examples/paraview/packer.json']
+  waitFor: ["-"]
+
+substitutions:
+    _ZONE : 'us-central1-f' # default value
+    _SUBNETWORK : 'default'
+    # Set the base image flavor : ['centos' | 'ubuntu' | 'ohpc']
+    _FLUID_BASE : 'centos'
+    _FLUID_VER : 'v2-5-0'
+    _IMAGE_NAME: 'paraview-gcp'
+
+
+timeout : 14400s

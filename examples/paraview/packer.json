@@ -1,0 +1,33 @@
+{
+  "variables": {
+    "project_id": "",
+    "zone": "us-central1-f",
+    "image_name":"custom-compute",
+    "subnet": "default",
+    "base": "centos",
+    "fluid_version": "v2-5-0"
+  },
+  "builders": [{
+    "type": "googlecompute",
+    "project_id": "{{user `project_id`}}",
+    "source_image": "fluid-slurm-gcp-compute-{{user `base`}}-{{user `fluid_version`}}",
+    "source_image_project_id": "fluid-cluster-ops",
+    "disk_size": 50,
+    "machine_type": "n1-standard-16",
+    "zone": "{{user `zone`}}",
+    "subnetwork" :"{{user `subnet`}}",
+    "image_family": "{{user `image_name`}}",
+    "image_name": "{{user `image_name`}}",
+    "instance_name":"{{user `image_name`}}-image-node-{{timestamp}}",
+    "tags":["cloudbuild"],
+    "ssh_username": "packer"
+  }],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E /bin/bash '{{ .Path }}'",
+      "script": "./examples/paraview/startup-script.sh"
+    }
+  ]
+}
+
