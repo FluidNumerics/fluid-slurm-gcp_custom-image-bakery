@@ -55,3 +55,6 @@ mpirun -np ${SLURM_NTASKS} rhoSimpleFoam -parallel
 
 # Post process to stitch together model output from each MPI rank
 reconstructPar
+
+# Touch a .foam file for opening this case in Paraview
+touch naca0012.foam
