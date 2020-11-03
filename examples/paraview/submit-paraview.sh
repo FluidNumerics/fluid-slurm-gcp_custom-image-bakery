@@ -13,14 +13,13 @@
  echo "#SBATCH --partition=$3"                                           >> $TEMP_FILE
  echo "#SBATCH --ntasks=$4"                                            >> $TEMP_FILE
  echo "#SBATCH --cpus-per-task=1"                                      >> $TEMP_FILE
- echo "#SBATCH --mem-per-cpu=$5"                                      >> $TEMP_FILE
+ echo "#SBATCH --mem-per-cpu=$5g"                                      >> $TEMP_FILE
  echo "#SBATCH --time=$6:00:00"                                        >> $TEMP_FILE
  echo "#SBATCH --job-name=paraview-$JOB"                               >> $TEMP_FILE
  echo "#SBATCH -o paraview-$JOB.log"                               >> $TEMP_FILE
  echo "#SBATCH -e paraview-$JOB.log"                               >> $TEMP_FILE
  echo ""                                                               >> $TEMP_FILE
- echo "#source /etc/profile.d/paraview.sh"                              >> $TEMP_FILE
- echo "module load paraview"                                           >> $TEMP_FILE
+ echo "source /etc/profile.d/paraview.sh"                              >> $TEMP_FILE
  echo ""                                                               >> $TEMP_FILE
  
  echo "mpirun -np \${SLURM_NTASKS} pvserver -rc -ch=$LOGIN --server-port=$1 --force-offscreen-rendering" >> $TEMP_FILE
