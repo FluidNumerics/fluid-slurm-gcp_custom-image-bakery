@@ -16,8 +16,8 @@
  echo "#SBATCH --mem-per-cpu=$5"                                      >> $TEMP_FILE
  echo "#SBATCH --time=$6:00:00"                                        >> $TEMP_FILE
  echo "#SBATCH --job-name=paraview-$JOB"                               >> $TEMP_FILE
- echo "#SBATCH -o /tmp/paraview-$JOB.log"                               >> $TEMP_FILE
- echo "#SBATCH -e /tmp/paraview-$JOB.log"                               >> $TEMP_FILE
+ echo "#SBATCH -o paraview-$JOB.log"                               >> $TEMP_FILE
+ echo "#SBATCH -e paraview-$JOB.log"                               >> $TEMP_FILE
  echo ""                                                               >> $TEMP_FILE
  echo "#source /etc/profile.d/paraview.sh"                              >> $TEMP_FILE
  echo "module load paraview"                                           >> $TEMP_FILE
@@ -45,12 +45,12 @@
 
  echo "Waiting for pvserver to start..."
  while true; do
-   PV_STATUS=$(grep "Client connected." /tmp/paraview-$JOB.log)
+   PV_STATUS=$(grep "Client connected." paraview-$JOB.log)
    if [ "$PV_STATUS" = "Client connected." ]; then
      echo "Paraview Server connected!"
      break
    else
      echo "Waiting for pvserver to connect to client..."
-     sleep 10
+     sleep 5
    fi
  done

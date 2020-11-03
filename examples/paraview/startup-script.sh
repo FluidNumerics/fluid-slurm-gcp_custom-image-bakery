@@ -113,7 +113,7 @@ ninja
 
 cat > /etc/profile.d/paraview.sh <<EOL
 #!/bin/bash
-export PATH=\${PATH}:${INSTALL_ROOT}/paraview/paraview-superbuild/install
+export PATH=\${PATH}:${INSTALL_ROOT}/paraview/install/bin
 export PATH=\${PATH}:${INSTALL_ROOT}/openmpi/bin
 export PATH=\${PATH}:${INSTALL_ROOT}/openmpi/include
 export LD_LIBRARY_PATH=\${LD_LIBRARY_PATH}:${INSTALL_ROOT}/openmpi/lib
