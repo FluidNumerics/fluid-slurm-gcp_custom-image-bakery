@@ -43,6 +43,7 @@
       <Arguments>
          <Argument value="-T"/>
          <Argument value="Paraview"/>
+         <Argument value="-hold"/>
          <Argument value="-e"/>
          <Argument value="$SSH_EXE$"/>
          <Argument value="-t"/>
