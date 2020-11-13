@@ -16,8 +16,8 @@ To get started,
 ### Create your custom images
 Custom GCE VM Images are created using Google Cloud Build with a Packer build step. 
 
-1. Edit the [startup-script.sh](./startup-script.sh) to include the steps necessary to install your package.
-2. Review the [cloudbuild.yaml](./cloudbuild.yaml) to familiarize yourself with the substitution variables.
+1. Edit the [imaging/startup-script.sh](./startup-script.sh) to include the steps necessary to install your package.
+2. Review the [imaging/cloudbuild.yaml](./cloudbuild.yaml) to familiarize yourself with the substitution variables. Change the `_IMAGE_NAME` variable so that it is set to your application.
 3. Launch Google Cloud Build with the necessary substitutions. For example, the command below will build your image on a 30 GB disk using the Ubuntu fluid-slurm-gcp image as a starting point. The image family will be marked as "my-app" and the specific image that is created will be "my-app-$timestamp" where "$timestamp" will be replaced with the timestamp for when the image is created.
 ```
 $ gcloud builds submit . --substitutions=_DISK_SIZE_GB=30,_FLUID_BASE="ubuntu",_IMAGE_NAME="my-app"

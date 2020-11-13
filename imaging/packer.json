@@ -20,8 +20,14 @@
     "image_name": "{{user `image_name`}}-{{timestamp}}",
     "instance_name":"{{user `image_name`}}-image-node-{{timestamp}}",
     "tags":["cloudbuild"],
-    "ssh_username": "packer",
-    "startup_script_file": "startup-script.sh"
-  }]
+    "ssh_username": "packer"
+  }],
+  "provisioners": [
+    {
+      "type": "shell",
+      "execute_command": "chmod +x {{ .Path }}; {{ .Vars }} sudo -E /bin/bash '{{ .Path }}'",
+      "script": "./imaging/startup-script.sh"
+    }
+  ]
 }
 
