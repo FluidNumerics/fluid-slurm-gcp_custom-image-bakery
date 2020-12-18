@@ -17,4 +17,4 @@ add-apt-repository \
    stable"
 
 apt-get update -y
-apt-get install docker-ce docker-ce-cli containerd.io
+apt-get install -y docker-ce docker-ce-cli containerd.io
