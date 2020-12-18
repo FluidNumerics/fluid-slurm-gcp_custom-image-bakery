@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export DEBIAN_FRONTEND=noninteractive
 apt-get update -y
 
 apt-get install -y \
