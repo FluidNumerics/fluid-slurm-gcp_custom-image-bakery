@@ -1,0 +1,25 @@
+steps:
+
+- id: Build Compute Node Image
+  name: 'hashicorp/packer'
+  args: ["build",
+        "-force",
+        "-var","project_id=$PROJECT_ID",
+        "-var","zone=$_ZONE",
+        "-var","image_name=${_IMAGE_NAME}",
+        "-var","build_id=${BUILD_ID}",
+        "-var","subnet=${_SUBNETWORK}",
+        "-var","source_image=${_SOURCE_IMAGE}",
+        "-var","source_image_project=${_SOURCE_IMAGE_PROJECT}",
+        './packer.json']
+  waitFor: ["-"]
+
+substitutions:
+    _ZONE : 'us-central1-f' # default value
+    _SUBNETWORK : 'default'
+    _SOURCE_IMAGE : 'fluid-slurm-gcp-compute-ubuntu-v2-5-0'
+    _SOURCE_IMAGE_PROJECT: 'fluid-cluster-ops'
+    _IMAGE_NAME: 'fluid-slurm-gcp-compute-ubuntu-docker'
+
+
+timeout : 14400s
