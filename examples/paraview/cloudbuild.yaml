@@ -34,7 +34,7 @@ substitutions:
     _SUBNETWORK : 'default'
     # Set the base image flavor : ['centos' | 'ubuntu' | 'ohpc']
     _FLUID_BASE : 'centos'
-    _FLUID_VER : 'v2-5-0'
+    _FLUID_VER : 'v2-6'
     _IMAGE_NAME: 'paraview-gcp'
 
 
