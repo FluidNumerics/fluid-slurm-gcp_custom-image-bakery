@@ -2,7 +2,7 @@
 
 INSTALL_ROOT="/usr/local"
 OPENMPI_VERSION="v4.0.5"
-PARAVIEW_VERSION="v5.8.0"
+PARAVIEW_VERSION="v5.9.0"
 
 ## Install the GCC-9 devtoolset
 yum -y update
